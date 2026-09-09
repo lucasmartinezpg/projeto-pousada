@@ -1,0 +1,123 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #d0f0ed;
+    margin: 0;
+    padding: 0;
+    color: #263238;
+}
+
+/* Cabeçalho */
+
+.cabecalho {
+    background-color: #48c9b0;
+    color: white;
+    padding: 25px 40px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+}
+
+.cabecalho h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.cabecalho p {
+    margin: 6px 0 0;
+    font-size: 15px;
+}
+
+/* Conteúdo */
+
+.container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Cards */
+
+.card {
+    background-color: white;
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.card h2 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: #248f7a;
+}
+
+/* Formulário */
+
+form {
+    max-width: 600px;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cfd8dc;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #48c9b0;
+}
+
+/* Botão */
+
+button {
+    margin-top: 25px;
+    padding: 12px 24px;
+    background-color: #48c9b0;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #35b39a;
+}
+
+/* Tabela */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+th {
+    background-color: #48c9b0;
+    color: white;
+    padding: 14px;
+    text-align: left;
+}
+
+td {
+    padding: 14px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+tr:hover {
+    background-color: #f0faf8;
+}

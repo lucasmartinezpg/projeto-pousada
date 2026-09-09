@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pousada Tia Carmem</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <header class="cabecalho">
+        <div>
+            <h1>🏨 Pousada Tia Carmem</h1>
+            <p>Sistema de Gestão da Pousada</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="card">
+            <h2>Cadastro de Reserva</h2>
+
+            <form method="POST">
+
+                <label>Nome do hóspede:</label>
+                <input type="text" name="nome_hospede" required>
+
+                <label>Telefone:</label>
+                <input type="text" name="telefone" required>
+
+                <label>Data de entrada:</label>
+                <input type="date" name="data_entrada" required>
+
+                <label>Data de saída:</label>
+                <input type="date" name="data_saida" required>
+
+                <label>Quantidade de pessoas:</label>
+                <input type="number" name="pessoas" min="1" required>
+
+                <label>Pet:</label>
+                <select name="pet" required>
+                    <option value="">Selecione</option>
+                    <option value="Sim">Sim</option>
+                    <option value="Não">Não</option>
+                </select>
+
+                <label>Valor da reserva:</label>
+                <input type="text" name="valor" placeholder="Ex: 1.500,00" required>
+
+                <button type="submit">Cadastrar Reserva</button>
+
+            </form>
+        </section>
+
+        <section class="card">
+            <h2>Reservas cadastradas</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Hóspede</th>
+                        <th>Telefone</th>
+                        <th>Entrada</th>
+                        <th>Saída</th>
+                        <th>Pessoas</th>
+                        <th>Pet</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for reserva in reservas %}
+                    <tr>
+                        <td>{{ reserva[0] }}</td>
+                        <td>{{ reserva[1] }}</td>
+                        <td>{{ reserva[2] }}</td>
+                        <td>{{ reserva[3] }}</td>
+                        <td>{{ reserva[4] }}</td>
+                        <td>{{ reserva[5] }}</td>
+                        <td>{{ reserva[6] }}</td>
+                        <td>R$ {{ "{:,.2f}".format(reserva[7]).replace(",", "X").replace(".", ",").replace("X", ".") }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+        </section>
+
+    </main>
+
+</body>
+</html>
