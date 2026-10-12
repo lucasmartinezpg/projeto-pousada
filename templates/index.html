@@ -68,6 +68,7 @@
                         <th>Pessoas</th>
                         <th>Pet</th>
                         <th>Valor</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
 
@@ -82,6 +83,9 @@
                         <td>{{ reserva[5] }}</td>
                         <td>{{ reserva[6] }}</td>
                         <td>R$ {{ "{:,.2f}".format(reserva[7]).replace(",", "X").replace(".", ",").replace("X", ".") }}</td>
+                        <td>
+                            <a href="/editar/{{ reserva[0] }}">Editar</a>
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>

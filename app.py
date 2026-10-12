@@ -24,7 +24,6 @@ def inicio():
         pet = request.form["pet"]
         valor = request.form["valor"]
 
-        # Converte o valor brasileiro para número
         valor = valor.replace(".", "").replace(",", ".")
         valor = float(valor)
 
@@ -43,6 +42,66 @@ def inicio():
     reservas = buscar_reservas()
 
     return render_template("index.html", reservas=reservas)
+
+
+@app.route("/editar/<int:id>", methods=["GET", "POST"])
+def editar_reserva(id):
+    conexao = sqlite3.connect("pousada.db")
+
+    if request.method == "POST":
+        nome_hospede = request.form["nome_hospede"]
+        telefone = request.form["telefone"]
+        data_entrada = request.form["data_entrada"]
+        data_saida = request.form["data_saida"]
+        pessoas = request.form["pessoas"]
+        pet = request.form["pet"]
+        valor = request.form["valor"]
+
+        valor = valor.replace(".", "").replace(",", ".")
+        valor = float(valor)
+
+        conexao.execute(
+            """
+            UPDATE reservas
+            SET nome_hospede = ?,
+                telefone = ?,
+                data_entrada = ?,
+                data_saida = ?,
+                pessoas = ?,
+                pet = ?,
+                valor = ?
+            WHERE id = ?
+            """,
+            (
+                nome_hospede,
+                telefone,
+                data_entrada,
+                data_saida,
+                pessoas,
+                pet,
+                valor,
+                id
+            )
+        )
+
+        conexao.commit()
+        conexao.close()
+
+        return redirect("/")
+
+    reserva = conexao.execute(
+        """
+        SELECT id, nome_hospede, telefone, data_entrada,
+               data_saida, pessoas, pet, valor
+        FROM reservas
+        WHERE id = ?
+        """,
+        (id,)
+    ).fetchone()
+
+    conexao.close()
+
+    return render_template("editar.html", reserva=reserva)
 
 
 app.run(debug=True)

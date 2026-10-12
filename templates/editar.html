@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Reserva - Pousada Tia Carmem</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <header class="cabecalho">
+        <div>
+            <h1>🏨 Pousada Tia Carmem</h1>
+            <p>Sistema de Gestão da Pousada</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="card">
+            <h2>Editar Reserva</h2>
+
+            <form method="POST">
+
+                <label>Nome do hóspede:</label>
+                <input type="text" name="nome_hospede" value="{{ reserva[1] }}" required>
+
+                <label>Telefone:</label>
+                <input type="text" name="telefone" value="{{ reserva[2] }}" required>
+
+                <label>Data de entrada:</label>
+                <input type="date" name="data_entrada" value="{{ reserva[3] }}" required>
+
+                <label>Data de saída:</label>
+                <input type="date" name="data_saida" value="{{ reserva[4] }}" required>
+
+                <label>Quantidade de pessoas:</label>
+                <input type="number" name="pessoas" min="1" value="{{ reserva[5] }}" required>
+
+                <label>Pet:</label>
+                <select name="pet" required>
+                    <option value="Sim" {% if reserva[6] == "Sim" %}selected{% endif %}>Sim</option>
+                    <option value="Não" {% if reserva[6] == "Não" %}selected{% endif %}>Não</option>
+                </select>
+
+                <label>Valor da reserva:</label>
+                <input type="text" name="valor" value="{{ "{:,.2f}".format(reserva[7]).replace(",", "X").replace(".", ",").replace("X", ".") }}" required>
+
+                <button type="submit">Salvar Alterações</button>
+
+            </form>
+        </section>
+
+    </main>
+
+</body>
+</html>
