@@ -83,8 +83,16 @@
                         <td>{{ reserva[5] }}</td>
                         <td>{{ reserva[6] }}</td>
                         <td>R$ {{ "{:,.2f}".format(reserva[7]).replace(",", "X").replace(".", ",").replace("X", ".") }}</td>
+
                         <td>
                             <a href="/editar/{{ reserva[0] }}">Editar</a>
+
+                            |
+
+                            <a href="/excluir/{{ reserva[0] }}"
+                               onclick="return confirm('Tem certeza que deseja excluir esta reserva?')">
+                                Excluir
+                            </a>
                         </td>
                     </tr>
                     {% endfor %}

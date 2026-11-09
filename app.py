@@ -104,4 +104,19 @@ def editar_reserva(id):
     return render_template("editar.html", reserva=reserva)
 
 
+@app.route("/excluir/<int:id>")
+def excluir_reserva(id):
+    conexao = sqlite3.connect("pousada.db")
+
+    conexao.execute(
+        "DELETE FROM reservas WHERE id = ?",
+        (id,)
+    )
+
+    conexao.commit()
+    conexao.close()
+
+    return redirect("/")
+
+
 app.run(debug=True)
